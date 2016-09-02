@@ -102,6 +102,6 @@ int updateAudio(){
     aCos6.next()*v6 +
     aCos7.next()*v7 +
     aCos8.next()*v8;
-  asig >>= 9;
+  asig >>= 7;
   return (int) asig;
 }

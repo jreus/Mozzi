@@ -71,6 +71,16 @@ otherwise make it false, to save resources.
 #define USE_AUDIO_INPUT false
 
 
+// EDIT: 20 Nov, 2015 Jonathan Reus - added AREF config option
+/** @ingroup core
+Whether to enable external AREF
+Put \#define USE_AREF_EXTERNAL true in Mozzi/mozzi_config.h to enable using
+the external AREF pin as an analog reference voltage for mozziAnalogRead
+Leaving it false or undefined will use the internal AVcc reference.
+*/
+//define USE_AREF_EXTERNAL true
+
+
 
 /** @ingroup core
 This sets which analog input channel to use for audio input, if you have 

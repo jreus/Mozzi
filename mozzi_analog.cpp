@@ -134,8 +134,19 @@ static void adcSetChannel(uint8_t channel) {
 	// set the analog reference (high two bits of ADMUX) and select the
 	// channel (low 4 bits).  this also sets ADLAR (left-adjust result)
 	// to 0 (the default).
+	// EDIT: Nov 20, 2015 - Jonathan Reus
+	// Set high 2 bits (REFS1, REFS0) of ADMUX to 00 to use AREF pin
+	// Set to 01 to use internal AVcc
 #if defined(ADMUX)
+	#if !defined(USE_AREF_EXTERNAL)
+	#define USE_AREF_EXTERNAL false
+	#endif
+
+	#if USE_AREF_EXTERNAL
+	ADMUX = (0 << REFS1) | (0 << REFS0) | (channel & 0x07);
+	#else
 	ADMUX = (1 << REFS0) | (channel & 0x07);
+	#endif
 #endif
 #endif
 }

@@ -32,14 +32,8 @@
 #	
 #	@author Tim Barrass 2010-12
 #	@fn char2mozzi
-
+from __future__ import print_function
 import sys, array, os, textwrap, random
-
-if len(sys.argv) != 5:
-        print ('Usage: char2mozzi.py <infile outfile tablename samplerate>')
-        sys.exit(1)
-
-[infile, outfile, tablename, samplerate] = sys.argv[1:]
 
 def char2mozzi(infile, outfile, tablename, samplerate):
 	fin = open(os.path.expanduser(infile), "rb")
@@ -79,4 +73,9 @@ def char2mozzi(infile, outfile, tablename, samplerate):
 		fout.close()
 		print ("wrote " + outfile)
 
-char2mozzi(infile, outfile, tablename, samplerate)
+if __name__ == "__main__":
+	if len(sys.argv) != 5:
+		print('Usage: char2mozzi.py <infile outfile tablename samplerate>')
+		sys.exit(1)
+	[infile, outfile, tablename, samplerate] = sys.argv[1:]
+	char2mozzi(infile, outfile, tablename, samplerate)
